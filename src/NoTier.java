@@ -1,0 +1,79 @@
+/**
+ * This class  extends a parent class called "Tier", and it implements methods for adding and getting information
+ * (New ID's/Passenger's start here)
+ * @Author Ahsan Awan
+ * @Version 1.0
+ */
+public class NoTier extends Tier {
+    private int miles; // Stores the miles the passenger accumulates
+    private int numOfCanceledFlights; // Stores the number of cancelled flights
+    private int numOfTotFlights; // Stores the number of total flights
+
+    /**
+     * Creates an object and assigns the variables 0
+     */
+    NoTier ()
+    {
+        miles = 0; // 0 miles
+        numOfCanceledFlights = 0; // 0 cancelled flights
+        numOfTotFlights = 0; // 0 total flights
+    } // end of NoTier
+
+    /**
+     *
+     * @return passenger's miles
+     */
+    @Override
+    public int getMiles() {
+        return miles;
+    } // end of getMiles
+
+    /**
+     *
+     * @return number of cancelled flights
+     */
+    @Override
+    public int getCancelledFlights() {
+        return numOfCanceledFlights;
+    } // End of getCancelled flights
+
+    /**
+     *
+     * @return returns total number of flights
+     */
+    @Override
+    public int getFlights() {
+        return numOfTotFlights;
+    } // End of getFlights
+
+    /**
+     * Add's the total number of flights, and if cancelled, add's the number of cancelled flights for a passenger
+     *
+     * @param isCancelled stores if the passenger's flight was cancelled or not
+     */
+    @Override
+    public void addFlight(boolean isCancelled) {
+        numOfTotFlights += 1; // increments total flights
+
+        // if passenger cancels
+        if (isCancelled) {
+            numOfCanceledFlights += 1; // Increments cancelled flights
+        } // End of if
+
+        incrementMi(isCancelled); // Increment miles is called and is passed isCancelled
+    } // End of addFlight
+
+    /**
+     * If passenger cancels, they are awarded miles
+     * @use in method addFlight(boolean isCancelled) to increment the miles of a passenger
+     * @param isCancelled stores if the passenger's flight was cancelled or not
+     */
+    @Override
+    public void incrementMi(boolean isCancelled) {
+
+        // if cancelled
+        if (isCancelled) {
+            miles += 1000;
+        } // End of if
+    } // End of incrementMi
+} // End of public Class NoTier
